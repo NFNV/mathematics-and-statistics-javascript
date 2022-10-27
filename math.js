@@ -37,3 +37,31 @@ const calculateCircle = (radius) => {
 console.table(calculateCircle(1))
 
 console.groupEnd('Circle')
+
+
+console.group('Isosceles triangle')
+
+const isoscelesTriangle = (sides, base) => {
+    if(sides == base) return 'not an isosceles triangle'
+    else {
+        return Math.sqrt((sides ** 2) - (base ** 2 / 4))
+    }
+}
+
+console.table(isoscelesTriangle(6, 4))
+
+console.groupEnd('Isosceles triangle')
+
+
+console.group('Scalene triangle')
+
+const scaleneTriangle = (side1, side2, side3) => {
+
+    const sp = (side1 + side2 + side3) / 2
+
+    return 2 / side1 * Math.sqrt(sp * (sp - side1) * (sp - side2) * (sp - side3))
+}
+
+console.table(scaleneTriangle(6, 8, 10))
+
+console.groupEnd('Scalene triangle')
