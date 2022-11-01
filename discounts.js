@@ -3,26 +3,29 @@ const inputPrice = document.querySelector("#price")
 const inputCoupon = document.querySelector("#coupon")
 const pResult = document.querySelector("#result")
 
+const couponsObj = {
+  'Discount_lvl_1': 15,
+  'Discount_lvl_2': 20,
+  'Discount_lvl_3': 25,
+  'Discount_lvl_4': 30,
+}
+
 const calculatePriceDiscount = () => {
   const price = Number(inputPrice.value)
   const coupon = inputCoupon.value
+  
+  if (!price || !coupon) return (pResult.innerText = "We need a price and a discount")
+
   let discount
 
-  if (!price || !coupon)
-    return (pResult.innerText = "We need a price and a discount")
-
-  switch (coupon) {
-    case "Discount_lvl_1":
-      discount = 15
-      break
-    case "Discount_lvl_2":
-      discount = 20
-      break
-    default:
-      pResult.innerText = "Coupon is not valid"
-      return
+  if (couponsObj[coupon]) {
+    discount
+  } else {
+    pResult.innerText = "Coupon is not valid"
+    return
   }
 
+  
   const newPrice = (price * (100 - discount)) / 100
 
   pResult.innerText = `Price with discount: ${newPrice}`
@@ -30,9 +33,14 @@ const calculatePriceDiscount = () => {
 
 btn.addEventListener("click", calculatePriceDiscount)
 
-// const couponsObj = {
-//   'Discount_lvl_1': 15,
-//   'Discount_lvl_2': 20,
-//   'Discount_lvl_3': 25,
-//   'Discount_lvl_4': 30,
+// switch (coupon) {
+//   case "Discount_lvl_1":
+//     discount = 15
+//     break
+//   case "Discount_lvl_2":
+//     discount = 20
+//     break
+//   default:
+    // pResult.innerText = "Coupon is not valid"
+    // return
 // }
